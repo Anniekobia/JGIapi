@@ -23,17 +23,18 @@ class AuthController extends Controller
     	$user->save();
 
     	$http = new Client;
-    	return "annie";
+    	
 		$response = $http->post(url('oauth/token'), [
 		    'form_params' => [
 		        'grant_type' => 'password',
 		        'client_id' => '2',
-		        'client_secret' => '3qE6d37k202lGglPrIY01SxRq2YGjk9rrviJoPUV',
+		        'client_secret' => 'd0dfm9OuOE1njo6pM79yyuFSJdVFNKY6znjbNFpD',
 		        'username' => $request->email,
 		        'password' => $request->password,
 		        'scope' => '',
 		    ],
 		]);
+        return "annie";
 		return response(['data'=>json_decode((string) $response->getBody(), true)]);
     }
     public function login(Request $request){

@@ -24,12 +24,12 @@ class AuthController extends Controller
 
     	$http = new Client;
 
-		$response = $http->post('http://localhost:8000/oauth/token', [
+		$response = $http->post('http://jgiapi.herokuapp.com/oauth/token', [
 		    'form_params' => [
 		        'grant_type' => 'password',
 		        'client_id' => '2',
 		        'client_secret' => '3qE6d37k202lGglPrIY01SxRq2YGjk9rrviJoPUV',
-		        'username' => $request->name,
+		        'username' => $request->email,
 		        'password' => $request->password,
 		        'scope' => '',
 		    ],

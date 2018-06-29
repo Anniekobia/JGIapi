@@ -16,14 +16,14 @@ class AuthController extends Controller
     		'name'=>'required',
     		'password'=>'required']);
 
-    	$user=new User(); 
+    	$user=User::firstOrNew(['email' =>$request->email]); 
     	$user->name=$request->name;
     	$user->email=$request->email;
     	$user->password=bcrypt($request->password);
     	$user->save();
 
     	$http = new Client;
-    	return "Annie";
+    	
 		$response = $http->post(url('oauth/token'), [
 		    'form_params' => [
 		        'grant_type' => 'password',

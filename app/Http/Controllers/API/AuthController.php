@@ -23,7 +23,7 @@ class AuthController extends Controller
     	$user->save();
 
     	$http = new Client;
-
+    	return "Annie";
 		$response = $http->post(url('oauth/token'), [
 		    'form_params' => [
 		        'grant_type' => 'password',

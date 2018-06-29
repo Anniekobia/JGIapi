@@ -24,7 +24,7 @@ class AuthController extends Controller
 
     	$http = new Client;
 
-		$response = $http->post('http://jgiapi.herokuapp.com/oauth/token', [
+		$response = $http->post(url('oauth/token'), [
 		    'form_params' => [
 		        'grant_type' => 'password',
 		        'client_id' => '2',

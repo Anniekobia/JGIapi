@@ -37,15 +37,15 @@ class AuthController extends Controller
 
 		return response(['data'=>json_decode((string) $response->getBody(), true)]);
     }
-    public function login(Request $request){
-        $request->validate([
-            'email'=>'required',
-            'password'=>'required']);
+    // public function login(Request $request){
+    //     $request->validate([
+    //         'email'=>'required',
+    //         'password'=>'required']);
 
-        $user=User::where('email'=>$request->email)->first();
-    	if (!$user) {
-            return response(['status'=>'error','message'=>'User not found']);
-        }
-    }
+    //     $user=User::where('email'=>$request->email)->first();
+    // 	if (!$user) {
+    //         return response(['status'=>'error','message'=>'User not found']);
+    //     }
+    // }
 }
 

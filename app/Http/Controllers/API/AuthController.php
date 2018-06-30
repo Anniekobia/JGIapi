@@ -61,7 +61,7 @@ class AuthController extends Controller
                     'scope' => '',
                 ],
             ]);
-
+            return "try again";
             return response(['data'=>json_decode((string) $response->getBody(), true)]);
         }
     }

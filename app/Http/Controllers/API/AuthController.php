@@ -49,7 +49,7 @@ class AuthController extends Controller
             return response(['status'=>'error','message'=>'User not found']);
         }
 
-        if(Hash::check($request->password,$user->password)) {
+        if(!Hash::check($request->password, $user->password)) {
             $http = new Client;
             return "try again";
             $response = $http->post(url('oauth/token'), [

@@ -48,9 +48,10 @@ class AuthController extends Controller
     	if (!$user) {
             return response(['status'=>'error','message'=>'User not found']);
         }
+        return "try again";
         if (Hash::check($request->password,$user->password)) {
             $http = new Client;
-            return "try again";
+            
             $response = $http->post(url('oauth/token'), [
                 'form_params' => [
                     'grant_type' => 'password',

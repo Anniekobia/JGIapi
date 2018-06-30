@@ -26,8 +26,12 @@ class AppUserController extends Controller
     	
     }
 
-    public function update(Request $request){
-    	
+    public function update(Request $request,AppUser $appuser){
+    	if ($request->user()->id!==$appuser->user_id) {
+    		return response()->json(['error'=>'Unauthorised action'],401);])
+    	}
+    	$appuser=appuser()->create($request->all());
+    	return new AppUserResource($appuser);
     }
     public function show($userid){
     	$userdata= AppUser::find($userid);

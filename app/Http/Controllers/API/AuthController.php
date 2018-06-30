@@ -48,7 +48,7 @@ class AuthController extends Controller
     	if (!$user) {
             return response(['status'=>'error','message'=>'User not found']);
         }
-        if (Hash::check($request=>password,$user=>password)) {
+        if (Hash::check($request->password,$user=>password)) {
             $http = new Client;
         
             $response = $http->post(url('oauth/token'), [

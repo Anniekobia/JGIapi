@@ -60,6 +60,7 @@ class AuthController extends Controller
                     'scope' => '',
                 ],
             ]);
+            return "guyu";
             return response(['data'=>json_decode((string) $response->getBody(), true)]);  
         }
     }

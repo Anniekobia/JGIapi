@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use GuzzleHttp\Client;	
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -37,15 +38,32 @@ class AuthController extends Controller
 
 		return response(['data'=>json_decode((string) $response->getBody(), true)]);
     }
-    // public function login(Request $request){
-    //     $request->validate([
-    //         'email'=>'required',
-    //         'password'=>'required']);
 
-    //     $user=User::where('email'=>$request->email)->first();
-    // 	if (!$user) {
-    //         return response(['status'=>'error','message'=>'User not found']);
-    //     }
-    // }
+    public function login(Request $request){
+        $request->validate([
+            'email'=>'required',
+            'password'=>'required']);
+
+        $user=User::where('email',$request->email)->first();
+    	if (!$user) {
+            return response(['status'=>'error','message'=>'User not found']);
+        }
+        if (Hash::check($request=>password,$user=>password)) {
+            $http = new Client;
+        
+            $response = $http->post(url('oauth/token'), [
+                'form_params' => [
+                    'grant_type' => 'password',
+                    'client_id' => '6',
+                    'client_secret' => '3bre0nWOdpgh6unzxNLye5ZCSIug1lW9dq302gD3',
+                    'username' => $request->email,
+                    'password' => $request->password,
+                    'scope' => '',
+                ],
+            ]);
+
+            return response(['data'=>json_decode((string) $response->getBody(), true)]);
+        }
+    }
 }
 

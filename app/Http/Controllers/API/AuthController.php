@@ -34,7 +34,7 @@ class AuthController extends Controller
 		        'scope' => '',
 		    ],
 		]);
-        return "huyu"
+        return "this";
 		return response(['data'=>json_decode((string) $response->getBody(), true)]);
     }
     public function login(Request $request){

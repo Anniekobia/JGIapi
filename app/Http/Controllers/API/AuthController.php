@@ -50,7 +50,7 @@ class AuthController extends Controller
         }
         if (Hash::check($request->password,$user->password)) {
             $http = new Client;
-        
+            return "try again";
             $response = $http->post(url('oauth/token'), [
                 'form_params' => [
                     'grant_type' => 'password',
@@ -61,7 +61,7 @@ class AuthController extends Controller
                     'scope' => '',
                 ],
             ]);
-            return "try again";
+
             return response(['data'=>json_decode((string) $response->getBody(), true)]);
         }
     }

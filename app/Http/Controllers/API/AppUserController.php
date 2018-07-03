@@ -18,8 +18,10 @@ class AppUserController extends Controller
     }
 
     public function index(Request $request){
-    	$AppUsers = AppUser::all();
-    	return AppUserResource::collection($AppUsers);
+	    return "Annie";
+//    	$AppUsers = AppUser::all();
+//    	return "No error";
+    	//return AppUserResource::collection($AppUsers);
     }
 
     public function destroy(Request $request){
@@ -28,7 +30,7 @@ class AppUserController extends Controller
 
     public function update(Request $request,AppUser $appuser){
     	if ($request->user()->id!==$appuser->user_id) {
-    		return response()->json(['error'=>'Unauthorised action'],401);])
+    		return response()->json(['error'=>'Unauthorised action'],401);
     	}
     	$appuser=appuser()->create($request->all());
     	return new AppUserResource($appuser);

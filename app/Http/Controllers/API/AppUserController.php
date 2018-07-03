@@ -9,9 +9,9 @@ use App\Http\Resources\AppUserResource;
 
 class AppUserController extends Controller
 {
-	function __construct(){
-		return $this->middleware('auth:api');
-	}
+//	function __construct(){
+//		return $this->middleware('auth:api');
+//	}
     public function store(Request $request){
     	$appuser=$request->user()->appuser()->create($request->all());
     	return new AppUserResource($appuser);

@@ -33,8 +33,9 @@ class AppUserController extends Controller
 
     public function update(Request $request, $userid)
     {
-        $userid = AppUser::update($request->all());
-        return new AppUserResource($userid);
+        $userdata = AppUser::find($userid);
+        $userdata->update($request->all());
+        return new AppUserResource($userdata);
     }
     public function show($userid)
     {

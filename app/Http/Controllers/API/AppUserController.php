@@ -31,12 +31,11 @@ class AppUserController extends Controller
 
     }
 
-    public function update(Request $request, AppUser $appuser)
+    public function update(Request $request, $userid)
     {
-        $appuser = AppUser::update($request->all());
-        return new AppUserResource($appuser);
+        $userid = AppUser::update($request->all());
+        return new AppUserResource($userid);
     }
-
     public function show($userid)
     {
         $userdata = AppUser::find($userid);

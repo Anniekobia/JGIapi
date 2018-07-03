@@ -26,17 +26,21 @@ class AppUserController extends Controller
         return AppUserResource::collection($AppUsers);
     }
 
-    public function destroy(Request $request)
+    public function destroy(Request $request,$userid)
     {
-
+        $userdata = AppUser::find($userid);
+        $userdata ->delete($request->all());
+        return new AppUserResource($userdata);
+        //TODO not make delete work
     }
 
     public function update(Request $request, $userid)
     {
         $userdata = AppUser::find($userid);
-        $newdata=$request->all();
-        $userdata->fill($newdata)->save();
+        $userdata ->update($request->all());
         return new AppUserResource($userdata);
+
+        //TODO not make update work
     }
     public function show($userid)
     {

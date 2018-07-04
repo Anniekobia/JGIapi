@@ -14,9 +14,18 @@ class AppUserController extends Controller
 //	}
     public function store(Request $request)
     {
-        $appuser = AppUser::create($request->all());
+        $userdata = AppUser::find($request->email);
+        if (!$userdata) {
+            $appuser = AppUser::create($request->all());
+            return "Register Success";
+        }
+        else{
+            return "Email already registered";
+        }
+//        return new AppUserResource($userdata);
+//        $appuser = AppUser::create($request->all());
         //return new AppUserResource($appuser);
-        return $appuser;
+        //return $appuser;
     }
 
     public function index()

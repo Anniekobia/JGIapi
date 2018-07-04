@@ -15,7 +15,8 @@ class AppUserController extends Controller
     public function store(Request $request)
     {
         $appuser = AppUser::create($request->all());
-        return new AppUserResource($appuser);
+        //return new AppUserResource($appuser);
+        return $appuser;
     }
 
     public function index()

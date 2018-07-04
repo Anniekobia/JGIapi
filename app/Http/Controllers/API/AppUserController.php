@@ -6,6 +6,7 @@ use App\AppUser;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\AppUserResource;
+use Illuminate\Support\Facades\Hash;
 
 class AppUserController extends Controller
 {

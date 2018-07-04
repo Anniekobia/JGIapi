@@ -22,7 +22,7 @@ class AppUserController extends Controller
             $storemethodresponse['status'] = 3;
             $storemethodresponse['message'] = "Please fill in all the fields";
             return $storemethodresponse;
-            //$userdata = AppUser::where('email', '=', $request->email)->first();
+            $userdata = AppUser::where('email', '=', $request->email)->first();
                 if ($userdata) {
                     $storemethodresponse['status'] = 2;
                     $storemethodresponse['message'] = "Email already registered";

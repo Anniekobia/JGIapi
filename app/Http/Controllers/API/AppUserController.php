@@ -17,25 +17,24 @@ class AppUserController extends Controller
     public function store(Request $request)
     {
         $storemethodresponse = array();
-        $userdata = AppUser::where('email', '=', $request->email)->first();
         //$userdata = AppUser::find($request->email);
         if ($request->firstname==null ||$request->lastname==null ||$request->email==null ||$request->password==null){
             $storemethodresponse['status']=3;
             $storemethodresponse['message']="Please fill in all the fields";
             return $storemethodresponse;
         }
-        else if ($userdata) {
+        $userdata = AppUser::where('email', '=', $request->email)->first();
+        if ($userdata) {
             $storemethodresponse['status']=2;
             $storemethodresponse['message']="Email already registered";
             return $storemethodresponse;
         }
         else{
-            $request->offsetUnset('firstname');
-            return $request->all();
-//            $appuser = AppUser::create($request->all());
-//            $storemethodresponse['status']=1;
-//            $storemethodresponse['message']="Successfully registered";
-//            return $storemethodresponse;
+            return "created";
+            $appuser = AppUser::create($request->all());
+            $storemethodresponse['status']=1;
+            $storemethodresponse['message']="Successfully registered";
+            return $storemethodresponse;
         }
 //        return new AppUserResource($userdata);
 //        $appuser = AppUser::create($request->all());

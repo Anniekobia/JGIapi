@@ -18,28 +18,28 @@ class AppUserController extends Controller
     {
         $storemethodresponse = array();
         $userdata = AppUser::find($request->email);
-        if ($request->firstname==null ||$request->lastname==null ||$request->email==null ||$request->password==null) {
-            $storemethodresponse['status'] = 3;
-            $storemethodresponse['message'] = "Please fill in all the fields";
+        if ($request->firstname==null ||$request->lastname==null ||$request->email==null ||$request->password==null){
+            $storemethodresponse['status']=3;
+            $storemethodresponse['message']="Please fill in all the fields";
             return $storemethodresponse;
-            $userdata = AppUser::where('email', '=', $request->email)->first();
-                if ($userdata) {
-                    $storemethodresponse['status'] = 2;
-                    $storemethodresponse['message'] = "Email already registered";
-                    return $storemethodresponse;
-                } else {
-                    return "created";
-                    $appuser = AppUser::create($request->all());
-                    $storemethodresponse['status'] = 1;
-                    $storemethodresponse['message'] = "Successfully registered";
-                    return $storemethodresponse;
-                }
+        //$userdata = AppUser::where('email', '=', $request->email)->first();
+        if ($userdata) {
+            $storemethodresponse['status']=2;
+            $storemethodresponse['message']="Email already registered";
+            return $storemethodresponse;
+        }
+        else{
+            return "created";
+            $appuser = AppUser::create($request->all());
+            $storemethodresponse['status']=1;
+            $storemethodresponse['message']="Successfully registered";
+            return $storemethodresponse;
+        }
 
 //        return new AppUserResource($userdata);
 //        $appuser = AppUser::create($request->all());
-            //return new AppUserResource($appuser);
-            //return $appuser;
-        }
+        //return new AppUserResource($appuser);
+        //return $appuser;
     }
 
     public function index()

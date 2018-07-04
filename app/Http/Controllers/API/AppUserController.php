@@ -14,8 +14,8 @@ class AppUserController extends Controller
 //	}
     public function store(Request $request)
     {
-        $userdata = AppUser::find($request->email);
-        //$userdata = AppUser::where('email', '=', $request->email)->first();
+        //$userdata = AppUser::find($request->email);
+        $userdata = AppUser::where('email', '=', $request->email)->first();
         if ($userdata>0) {
             return "Email already registered";
         }

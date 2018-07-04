@@ -30,7 +30,7 @@ class AppUserController extends Controller
             return $storemethodresponse;
         }
         else{
-            //$request->offsetUnset('type');
+            $request->offsetUnset('firstname');
             return $request->all();
 //            $appuser = AppUser::create($request->all());
 //            $storemethodresponse['status']=1;

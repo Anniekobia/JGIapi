@@ -103,7 +103,7 @@ class AppUserController extends Controller
 
         $validCredentials = Hash::check($request->password, $user->password);
         return $validCredentials ? 'true' : 'false';
-        return $validCredentials.;
+        return $validCredentials;
         if ($validCredentials==true) {
             return $user->name;
         }

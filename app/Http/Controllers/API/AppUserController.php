@@ -74,17 +74,17 @@ class AppUserController extends Controller
         }
         return new AppUserResource($userdata);
     }
-    public function loginstore(Request $request){
-        $storemethodresponse = array();
-        $userdata = AppUser::where('email', $request->email)->first();
-        //$validate =
-        if ($userdata){
-            $storemethodresponse['status'] = 1;
-            $storemethodresponse['message'] = "Logged in";
-        }
-        elseif(){
-            $storemethodresponse['status'] = 2;
-            $storemethodresponse['message'] = "Wrong Email address";
-        }
-    }
+//    public function loginstore(Request $request){
+//        $storemethodresponse = array();
+//        $userdata = AppUser::where('email', $request->email)->first();
+//        //$validate =
+//        if ($userdata){
+//            $storemethodresponse['status'] = 1;
+//            $storemethodresponse['message'] = "Logged in";
+//        }
+//        elseif(){
+//            $storemethodresponse['status'] = 2;
+//            $storemethodresponse['message'] = "Wrong Email address";
+//        }
+//    }
 }

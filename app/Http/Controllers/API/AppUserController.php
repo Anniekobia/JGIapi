@@ -31,7 +31,7 @@ class AppUserController extends Controller
         }
         else{
             //$request->offsetUnset('type');
-            return $request;
+            return $request->all();
 //            $appuser = AppUser::create($request->all());
 //            $storemethodresponse['status']=1;
 //            $storemethodresponse['message']="Successfully registered";

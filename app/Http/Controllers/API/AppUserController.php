@@ -107,7 +107,7 @@ class AppUserController extends Controller
             $storemethodresponse['message'] = "Please fill in the required fields";
             return $storemethodresponse;
         }
-        elseif($user){
+        elseif(!$user){
             $storemethodresponse['status'] = 2;
             $storemethodresponse['message'] = "Wrong username or password";
             return $storemethodresponse;
@@ -117,7 +117,7 @@ class AppUserController extends Controller
             $storemethodresponse['message'] = "Login success";
             return $storemethodresponse;
         }else{
-            
+
         }
 
 //        $storemethodresponse = array();

@@ -77,7 +77,7 @@ class AppUserController extends Controller
     public function loginstore(Request $request){
         $storemethodresponse = array();
         $userdata = AppUser::where('email', $request->email)->first();
-        $validate =
+        //$validate =
         if ($userdata){
             $storemethodresponse['status'] = 1;
             $storemethodresponse['message'] = "Logged in";

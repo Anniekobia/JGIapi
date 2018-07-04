@@ -18,6 +18,11 @@ class AppUserController extends Controller
     {
         $storemethodresponse = array();
         //$userdata = AppUser::find($request->email);
+        if ($request->firstname==null ||$request->lastname==null ||$request->email==null ||$request->password==null){
+            $storemethodresponse['status']=3;
+            $storemethodresponse['message']="Please fill in all the fields";
+            return $storemethodresponse;
+        }
         $userdata = AppUser::where('email', '=', $request->email)->first();
         if ($userdata) {
             $storemethodresponse['status']=2;

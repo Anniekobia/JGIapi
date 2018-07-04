@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\AppUserResource;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class AppUserController extends Controller
 {
@@ -94,4 +95,17 @@ class AppUserController extends Controller
 //            $storemethodresponse['message'] = "Wrong Email address";
 //        }
 //    }
+    public function authenticate(Request $request)
+    {
+        $storemethodresponse = array();
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            $storemethodresponse['status'] = 1;
+            $storemethodresponse['message'] = "Login success";
+        }else{
+            $storemethodresponse['status'] = 2;
+            $storemethodresponse['message'] = "Wrong email or password";
+        }
+
+    }
 }

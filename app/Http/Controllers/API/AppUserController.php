@@ -21,7 +21,6 @@ class AppUserController extends Controller
     {
         $storemethodresponse = array();
         $passlength =strlen ($request->password );
-        return $passlength;
         $userdata = AppUser::where('email', $request->email)->first();
         if ($request->firstname == null || $request->lastname == null || $request->email == null || $request->password == null) {
             $storemethodresponse['status'] =4 ;

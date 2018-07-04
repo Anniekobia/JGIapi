@@ -100,8 +100,7 @@ class AppUserController extends Controller
     {
         $storemethodresponse = array();
         $user = AppUser::where('email', $request->email)->first();
-        $validCredentials = Hash::check($request->password, $user->password);
-        $boolvalue = $validCredentials ? 'true' : 'false';
+
         if($request->email==null||$request->password==null){
             $storemethodresponse['status'] = 3;
             $storemethodresponse['message'] = "Please fill in the required fields";
@@ -112,12 +111,14 @@ class AppUserController extends Controller
             $storemethodresponse['message'] = "Wrong username or password";
             return $storemethodresponse;
         }
-        elseif ($boolvalue==true){
-            $storemethodresponse['status'] = 1;
-            $storemethodresponse['message'] = "Login success";
-            return $storemethodresponse;
-        }else{
-
+        else {
+            $validCredentials = Hash::check($request->password, $user->password);
+            $boolvalue = $validCredentials ? 'true' : 'false';
+            if ($boolvalue==true) {
+                $storemethodresponse['status'] = 1;
+                $storemethodresponse['message'] = "Login success";
+            }
+        return $storemethodresponse;
         }
 
 //        $storemethodresponse = array();

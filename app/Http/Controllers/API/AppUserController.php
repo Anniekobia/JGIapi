@@ -102,7 +102,8 @@ class AppUserController extends Controller
         $user = AppUser::where('email', $request->email)->first();
 
         $validCredentials = Hash::check($request->password, $user->password);
-        return $validCredentials.toJSON();
+        return $validCredentials ? 'true' : 'false';
+        return $validCredentials.;
         if ($validCredentials==true) {
             return $user->name;
         }

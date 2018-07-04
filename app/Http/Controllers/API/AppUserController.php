@@ -29,9 +29,6 @@ class AppUserController extends Controller
             $storemethodresponse['message'] = "Email already registered";
             return $storemethodresponse;
         } else {
-            return $request;
-            $request->offsetUnset('firstname');
-            return $request;
             $appuser = AppUser::create($request->all());
             $storemethodresponse['status'] = 1;
             $storemethodresponse['message'] = "Successfully registered";

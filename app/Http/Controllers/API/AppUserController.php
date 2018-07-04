@@ -12,16 +12,23 @@ class AppUserController extends Controller
 //	function __construct(){
 //		return $this->middleware('auth:api');
 //	}
+
+    //responce data =1 is success ,2 is failed
     public function store(Request $request)
     {
+        $storemethodresponse = array();
         //$userdata = AppUser::find($request->email);
         $userdata = AppUser::where('email', '=', $request->email)->first();
         if ($userdata) {
-            return "Email already registered";
+            $storemethodresponse['status']=2;
+            $storemethodresponse['message']="Email already registered";
+            return $storemethodresponse;
         }
         else{
             $appuser = AppUser::create($request->all());
-            return "Register Success";
+            $storemethodresponse['status']=1;
+            $storemethodresponse['message']="Successfully registered";
+            return $storemethodresponse;
         }
 //        return new AppUserResource($userdata);
 //        $appuser = AppUser::create($request->all());

@@ -15,10 +15,10 @@ class CreateAppUsersTable extends Migration
     {
         Schema::create('app_users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('firstname', 20);
-            $table->string('lastname', 20);
-            $table->string('email',100);
-            $table->string('password', 100);
+            $table->string('firstname', 200);
+            $table->string('lastname', 200);
+            $table->string('email',200);
+            $table->string('password', 200);
             $table->timestamps();
         });
     }

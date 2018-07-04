@@ -21,3 +21,4 @@ Route::post('/register','API\AuthController@register');
 Route::post('/login','API\AuthController@login');
 //AppUser routes
 Route::apiResource('/AppUser','API\AppUserController');
+Route::post('/login','API\AppUserController');

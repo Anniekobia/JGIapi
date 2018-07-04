@@ -29,7 +29,7 @@ class AppUserController extends Controller
             $storemethodresponse['message'] = "Email already registered";
             return $storemethodresponse;
         } else {
-            $appuser = AppUser::create($request->all());
+            $appuser = AppUser::create($request->firstname,$request->lastname,$request->email,$request->password);
             $storemethodresponse['status'] = 1;
             $storemethodresponse['message'] = "Successfully registered";
             return $storemethodresponse;
@@ -72,5 +72,18 @@ class AppUserController extends Controller
             return "User not found";
         }
         return new AppUserResource($userdata);
+    }
+    public function loginstore(Request $request){
+        $storemethodresponse = array();
+        $userdata = AppUser::where('email', $request->email)->first();
+        $validate =
+        if ($userdata){
+            $storemethodresponse['status'] = 1;
+            $storemethodresponse['message'] = "Logged in";
+        }
+        elseif(){
+            $storemethodresponse['status'] = 2;
+            $storemethodresponse['message'] = "Wrong Email address";
+        }
     }
 }

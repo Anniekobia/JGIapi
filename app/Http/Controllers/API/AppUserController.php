@@ -102,12 +102,17 @@ class AppUserController extends Controller
         $user = AppUser::where('email', $request->email)->first();
         $validCredentials = Hash::check($request->password, $user->password);
         $boolvalue = $validCredentials ? 'true' : 'false';
-        if($user){
+        if($request->email==null||$request->password==null){
+            $storemethodresponse['status'] = 3;
+            $storemethodresponse['message'] = "Please fill in the required fields";
+            return $storemethodresponse;
+        }
+        elseif($user){
             $storemethodresponse['status'] = 2;
             $storemethodresponse['message'] = "Wrong username or password";
             return $storemethodresponse;
         }
-        elseif ($boolvalue==true){
+        else ($boolvalue==true){
             $storemethodresponse['status'] = 1;
             $storemethodresponse['message'] = "Login success";
             return $storemethodresponse;

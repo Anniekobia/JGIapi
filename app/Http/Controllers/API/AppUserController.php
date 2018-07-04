@@ -24,7 +24,7 @@ class AppUserController extends Controller
             return $storemethodresponse;
         }
         $userdata = AppUser::where('email', '=', $request->email)->first();
-        if ($userdata) {
+        else if ($userdata) {
             $storemethodresponse['status']=2;
             $storemethodresponse['message']="Email already registered";
             return $storemethodresponse;

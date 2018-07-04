@@ -112,11 +112,14 @@ class AppUserController extends Controller
             $storemethodresponse['message'] = "Wrong username or password";
             return $storemethodresponse;
         }
-        else ($boolvalue==true){
+        elseif ($boolvalue==true){
             $storemethodresponse['status'] = 1;
             $storemethodresponse['message'] = "Login success";
             return $storemethodresponse;
+        }else{
+            
         }
+
 //        $storemethodresponse = array();
 //        $credentials = $request->only('email', 'password');
 //        if (Auth::attempt($credentials)) {

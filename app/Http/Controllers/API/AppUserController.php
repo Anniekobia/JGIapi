@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\AppUserResource;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use function MongoDB\BSON\toJSON;
 
 class AppUserController extends Controller
 {
@@ -101,7 +102,7 @@ class AppUserController extends Controller
         $user = AppUser::where('email', $request->email)->first();
 
         $validCredentials = Hash::check($request->password, $user->password);
-        return $validCredentials;
+        return $validCredentials.boolval().toJSON();
         if ($validCredentials==true) {
             return $user->name;
         }

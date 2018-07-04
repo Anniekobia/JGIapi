@@ -43,7 +43,6 @@ class AppUserController extends Controller
 
     public function index()
     {
-
         $AppUsers = AppUser::all();
 //    	return "No error";
         return AppUserResource::collection($AppUsers);
@@ -68,6 +67,7 @@ class AppUserController extends Controller
     public function show($userid)
     {
         $userdata = AppUser::find($userid);
+        return $userdata;
         if (!$userdata) {
             return "User not found";
         }

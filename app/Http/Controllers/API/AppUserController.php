@@ -97,12 +97,13 @@ class AppUserController extends Controller
 //    }
     public function authenticate(Request $request)
     {
-        $user = AppUser::where('email', $request['email'])->first();
+       // $user = AppUser::where('email', $request['email'])->first();
+        $user = AppUser::where('email', $request->email)->first();
 
-        $validCredentials = Hash::check($request['password'], $user->password);
+        $validCredentials = Hash::check($request->password, $user->password);
 
         if ($validCredentials) {
-            return $user;
+            return $user->name;
         }
 //        $storemethodresponse = array();
 //        $credentials = $request->only('email', 'password');

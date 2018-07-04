@@ -102,7 +102,7 @@ class AppUserController extends Controller
 
         $validCredentials = Hash::check($request->password, $user->password);
         return "upto here";
-        if ($validCredentials) {
+        if ($validCredentials==true) {
             return $user->name;
         }
 //        $storemethodresponse = array();

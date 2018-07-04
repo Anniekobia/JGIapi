@@ -16,7 +16,7 @@ class AppUserController extends Controller
     {
         //$userdata = AppUser::find($request->email);
         $userdata = AppUser::where('email', '=', $request->email)->first();
-        if (count($userdata)>0) {
+        if ($userdata) {
             return "Email already registered";
         }
         else{

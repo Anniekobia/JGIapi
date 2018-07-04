@@ -24,10 +24,16 @@ class AppUserController extends Controller
         return $passlength;
         $userdata = AppUser::where('email', $request->email)->first();
         if ($request->firstname == null || $request->lastname == null || $request->email == null || $request->password == null) {
-            $storemethodresponse['status'] = 3;
+            $storemethodresponse['status'] =4 ;
             $storemethodresponse['message'] = "Please fill in all the fields";
             return $storemethodresponse;
         }
+        elseif ($passlength<8){
+            $storemethodresponse['status'] = 3;
+            $storemethodresponse['message'] ="Password length must not be less than 6";
+            return $storemethodresponse;
+        }
+
         //$userdata = AppUser::where('email', '=', $request->email)->first();
         elseif($userdata) {
             $storemethodresponse['status'] = 2;

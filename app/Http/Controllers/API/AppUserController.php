@@ -30,10 +30,12 @@ class AppUserController extends Controller
             return $storemethodresponse;
         }
         else{
-            $appuser = AppUser::create($request->all());
-            $storemethodresponse['status']=1;
-            $storemethodresponse['message']="Successfully registered";
-            return $storemethodresponse;
+            //$request->offsetUnset('type');
+            return $request;
+//            $appuser = AppUser::create($request->all());
+//            $storemethodresponse['status']=1;
+//            $storemethodresponse['message']="Successfully registered";
+//            return $storemethodresponse;
         }
 //        return new AppUserResource($userdata);
 //        $appuser = AppUser::create($request->all());
@@ -67,7 +69,6 @@ class AppUserController extends Controller
     public function show($userid)
     {
         $userdata = AppUser::find($userid);
-        return $userdata;
         if (!$userdata) {
             return "User not found";
         }

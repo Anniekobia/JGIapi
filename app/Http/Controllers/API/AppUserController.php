@@ -31,8 +31,13 @@ class AppUserController extends Controller
             return $storemethodresponse;
         } else {
             $password = Hash::make($request->password);
-            $newrequestarray=[$request->firstname,$request->lastname,$request->email,$password];
-            $appuser = AppUser::create($newrequestarray);
+            $appuser=new AppUser;
+            $appuser->firstname=$request->firstname;
+            $appuser->lastname=$request->lastname;
+            $appuser->email=$request->email;
+            $appuser->password=$password;
+            $appuser->save();
+            //$appuser = AppUser::create($request->firstname,$request->lastname,$request->email,$password);
             $storemethodresponse['status'] = 1;
             $storemethodresponse['message'] = "Successfully registered";
             return $storemethodresponse;

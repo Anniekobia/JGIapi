@@ -15,7 +15,7 @@ class AppUserController extends Controller
     public function store(Request $request)
     {
         $userdata = AppUser::find($request->email);
-        if (!$userdata) {
+        if ($userdata>0) {
             $appuser = AppUser::create($request->all());
             return "Register Success";
         }

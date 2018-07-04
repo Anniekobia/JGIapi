@@ -37,10 +37,10 @@ class AppUserController extends Controller
             $appuser->email=$request->email;
             $appuser->password=$password;
             $appuser->save();
-            //$appuser = AppUser::create($request->firstname,$request->lastname,$request->email,$password);
             $storemethodresponse['status'] = 1;
             $storemethodresponse['message'] = "Successfully registered";
             return $storemethodresponse;
+            //$appuser = AppUser::create($request->firstname,$request->lastname,$request->email,$password);
         }
 
 //        return new AppUserResource($userdata);

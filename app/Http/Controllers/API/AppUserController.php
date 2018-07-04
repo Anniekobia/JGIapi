@@ -15,12 +15,13 @@ class AppUserController extends Controller
     public function store(Request $request)
     {
         $userdata = AppUser::find($request->email);
+        //$userdata = AppUser::where('email', '=', $request->email)->first();
         if ($userdata>0) {
-            $appuser = AppUser::create($request->all());
-            return "Register Success";
+            return "Email already registered";
         }
         else{
-            return "Email already registered";
+            $appuser = AppUser::create($request->all());
+            return "Register Success";
         }
 //        return new AppUserResource($userdata);
 //        $appuser = AppUser::create($request->all());

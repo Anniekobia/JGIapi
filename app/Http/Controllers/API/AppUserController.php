@@ -99,7 +99,7 @@ class AppUserController extends Controller
     {
         $user = AppUser::where('email', $request['email'])->first();
 
-        $validCredentials = Hash::check($request['password'], $user->getAuthPassword());
+        $validCredentials = Hash::check($request['password'], $user->password);
 
         if ($validCredentials) {
             return $user;

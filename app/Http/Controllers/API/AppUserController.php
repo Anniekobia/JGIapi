@@ -24,18 +24,17 @@ class AppUserController extends Controller
             return $storemethodresponse;
         }
         $userdata = AppUser::where('email', '=', $request->email)->first();
-        else if ($userdata) {
+        if ($userdata) {
             $storemethodresponse['status']=2;
             $storemethodresponse['message']="Email already registered";
             return $storemethodresponse;
         }
         else{
-            //$request->offsetUnset('firstname');
             return $request->all();
-//            $appuser = AppUser::create($request->all());
-//            $storemethodresponse['status']=1;
-//            $storemethodresponse['message']="Successfully registered";
-//            return $storemethodresponse;
+            $appuser = AppUser::create($request->all());
+            $storemethodresponse['status']=1;
+            $storemethodresponse['message']="Successfully registered";
+            return $storemethodresponse;
         }
 //        return new AppUserResource($userdata);
 //        $appuser = AppUser::create($request->all());
@@ -45,6 +44,7 @@ class AppUserController extends Controller
 
     public function index()
     {
+
         $AppUsers = AppUser::all();
 //    	return "No error";
         return AppUserResource::collection($AppUsers);

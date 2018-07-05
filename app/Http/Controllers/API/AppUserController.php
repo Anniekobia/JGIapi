@@ -24,7 +24,7 @@ class AppUserController extends Controller
         $userdata = AppUser::where('email', $request->email)->first();
         if ($request->firstname == null || $request->lastname == null || $request->email == null || $request->password == null) {
             $storemethodresponse['status'] = 4;
-            $storedmethodresponce['username']=$request->firstname;
+            $storedmethodresponce['username']="No name";
             $storemethodresponse['message'] = "Please fill in all the fields";
             return $storemethodresponse;
         }
@@ -101,13 +101,13 @@ class AppUserController extends Controller
 
         if($request->email==null||$request->password==null){
             $storemethodresponse['status'] = 3;
-            $storedmethodresponce['username']=$user->firstname;
+            $storedmethodresponce['username']="No name";
             $storemethodresponse['message'] = "Please fill in the required fields";
             return $storemethodresponse;
         }
         elseif(!$user){
             $storemethodresponse['status'] = 2;
-            $storedmethodresponce['username']=$user->firstname;
+            $storedmethodresponce['username']="No name";
             $storemethodresponse['message'] = "Wrong username or password";
             return $storemethodresponse;
         }

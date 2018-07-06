@@ -23,4 +23,6 @@ Route::post('/login','API\AuthController@login');
 //AppUser routes
 Route::apiResource('/AppUser','API\AppUserController');
 Route::post('/authenticate','API\AppUserController@authenticate');
+//AppUserDetails routes
+Route::post('/updateuserdetails','API\AppUserDetailsController@updateuserdetails');
 //Route::controller('authenticate', 'API\AppUserController@authenticate');

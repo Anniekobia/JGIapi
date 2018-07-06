@@ -20,7 +20,7 @@ class CreateAppUserDetailsTable extends Migration
             $table->String('gender');
             $table->Integer('weight');
             $table->Integer('weight_goal');
-            $table->String('home_gym_locations');
+            $table->String('home_gym_location');
         });
     }
 

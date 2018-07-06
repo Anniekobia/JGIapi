@@ -2,29 +2,32 @@
 
 namespace App\Http\Controllers\API;
 
+use App\AppUser;
+use App\AppUserDetails;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class AppUserDetailsController extends Controller
 {
-    public function update(Request $request)
+    public function updateuserdetails(Request $request)
     {
         $storemethodresponse = array();
-        $user = AppUserDetails::where('email', $request->email)->first();
+        $user = AppUser::where('email', $request->email)->first();
 
-        if($request->email==null){
-            $storemethodresponse['status'] = 2;
-            //$storedmethodresponce['username']="No name";
-            $storemethodresponse['message'] = "Not a user";
-            return $storemethodresponse;
+        if ($user){
+            $userdetails=new AppUserDetails;
+            $userdetails->user_id = $user->id;
+            $userdetails->age = $request->age;
+            $userdetails->gender = $request->gender;
+            $userdetails->weight = $request->weight;
+            $userdetails->weight_goal = $request->weightgoal;
+            $userdetails->home_gym_location = $request->homegymlocation;
+            $userdetails->save();
+            $storemethodresponse['status']=1;
+            $storemethodresponse['message']="Succesfully added";
+        }else{
+            $storemethodresponse['status']=2;
+            $storemethodresponse['message']="No such user";
         }
-        else {
-                $storemethodresponse['status'] = 1;
-                //$storedmethodresponce['username']= ;
-                $storemethodresponse['message'] = "Login success";
-            }
-            return $storemethodresponse;
-
-        }
-
+    }
 }

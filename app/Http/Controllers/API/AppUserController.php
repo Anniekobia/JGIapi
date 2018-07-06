@@ -121,7 +121,6 @@ class AppUserController extends Controller
                 $storedmethodresponce['email']= $user->email;
                 $storemethodresponse['message'] = "Login success";
             }
-            return $storemethodresponse['firstname'];
         return $storemethodresponse;
 
         }

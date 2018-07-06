@@ -119,9 +119,9 @@ class AppUserController extends Controller
             $boolvalue = $validCredentials ? 'true' : 'false';
             if ($boolvalue==true) {
                 $storedmethodresponse['status'] = 1;
-                $storedmethodresponce['firstname'] = $firstname;
-                $storedmethodresponce['lastname']= $lastname;
-                $storedmethodresponce['email']= $email;
+                $storedmethodresponse['firstname'] = $firstname;
+                $storedmethodresponse['lastname']= $lastname;
+                $storedmethodresponse['email']= $email;
                 $storedmethodresponse['message'] = "Login success";
             }
         return $storedmethodresponse;

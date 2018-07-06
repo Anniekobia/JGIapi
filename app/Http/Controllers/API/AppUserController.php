@@ -117,11 +117,11 @@ class AppUserController extends Controller
             if ($boolvalue==true) {
                 $storemethodresponse['status'] = 1;
                 $storedmethodresponce['firstname']= $user->firstname;
-                $storedmethodresponce['lastname']= $user->lasstname;
+                $storedmethodresponce['lastname']= $user->lastname;
                 $storedmethodresponce['email']= $user->email;
                 $storemethodresponse['message'] = "Login success";
             }
-            return $storemethodresponse->firstname;
+            return $storemethodresponse['firstname'];
         return $storemethodresponse;
 
         }

@@ -21,7 +21,6 @@ class CreateAppUserDetailsTable extends Migration
             $table->Integer('weight');
             $table->Integer('weight_goal');
             $table->String('home_gym_locations');
-            $table->timestamp();
         });
     }
 

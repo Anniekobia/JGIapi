@@ -25,6 +25,7 @@ class AppUserDetailsController extends Controller
             $userdetails->save();
             $storemethodresponse['status']=1;
             $storemethodresponse['message']="Successfully updated";
+            return $storemethodresponse;
         }else if($user){
             $userdetails=new AppUserDetails;
             $userdetails->user_id = $user->id;
@@ -36,6 +37,7 @@ class AppUserDetailsController extends Controller
             $userdetails->save();
             $storemethodresponse['status']=1;
             $storemethodresponse['message']="Succesfully added";
+            return $storemethodresponse;
         }
     }
 }

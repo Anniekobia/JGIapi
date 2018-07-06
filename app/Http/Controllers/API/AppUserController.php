@@ -98,6 +98,9 @@ class AppUserController extends Controller
     {
         $storemethodresponse = array();
         $user = AppUser::where('email', $request->email)->first();
+        $firstname=$user->firstname;
+        $lastname=$user->lastname;
+        $email=$user->email;
 
         if($request->email==null||$request->password==null){
             $storemethodresponse['status'] = 3;
@@ -115,11 +118,11 @@ class AppUserController extends Controller
             $validCredentials = Hash::check($request->password, $user->password);
             $boolvalue = $validCredentials ? 'true' : 'false';
             if ($boolvalue==true) {
-                $storemethodresponse['status'] = 1;
-                $storedmethodresponce['firstname']= $user->firstname;
-                $storedmethodresponce['lastname']= $user->lastname;
-                $storedmethodresponce['email']= $user->email;
-                $storemethodresponse['message'] = "Login success";
+                //$storemethodresponse['status'] = 1;
+                $storedmethodresponce['firstname'] = $firstname;
+                $storedmethodresponce['lastname']= $lastname;
+                $storedmethodresponce['email']= $email;
+                //$storemethodresponse['message'] = "Login success";
             }
         return $storemethodresponse;
 
